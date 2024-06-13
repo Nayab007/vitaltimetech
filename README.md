@@ -1,3 +1,25 @@
+This is the code test assessment that I did for vitaltimetech.com. I did this project using Next.js and tailwindCSS. This project requires a drag n' drop feature. I also have the live website set up where you can see the drag n' drop feature working time. Here is a small video demo of this project.
+
+
+
+
+
+Uploading vitaltimetech.mp4…
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
