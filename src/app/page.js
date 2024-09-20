@@ -1,7 +1,6 @@
 "use client";
 import { useRef, useState } from 'react';
 
-
 export default function Home() {
   const [people, setPeople] = useState([
     { id: 1, name: 'Scotland Island', content: 'Sydney, Australia', image: '/images/image1.png' },
@@ -15,6 +14,7 @@ export default function Home() {
   const dragItem = useRef(null);
   const draggedOverItem = useRef(null);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null); // Track the selected item
 
   function handleDragStart(event, index) {
     dragItem.current = index;
@@ -48,6 +48,10 @@ export default function Home() {
     setHoveredItem(null);
   }
 
+  function handleClick(index) {
+    setSelectedItem(index); // Set the selected item
+  }
+
   return (
     <>
       <main className="flex min-h-screen flex-col items-center space-y-1">
@@ -56,7 +60,13 @@ export default function Home() {
         {people.map((person, index) => (
           <div
             key={person.id}
-            className={`relative flex space-x-3 border rounded p-2 bg-gray-100 ${hoveredItem === index ? 'hover-effect' : ''} ${dragItem.current === index ? 'dragging-effect' : ''}`}
+            className={`relative flex space-x-3 border rounded p-2 bg-gray-100 ${
+              hoveredItem === index ? 'hover-effect' : ''
+            } ${
+              dragItem.current === index ? 'dragging-effect' : ''
+            } ${
+              selectedItem === index ? 'selected-effect' : '' // Apply selected-effect class
+            }`}
             style={{
               width: '400px',
               zIndex: dragItem.current === index ? 1 : 'auto',
@@ -71,6 +81,7 @@ export default function Home() {
             onDragOver={(e) => e.preventDefault()}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick(index)} // Handle click event
           >
             {person.image && (
               <img
@@ -108,4 +119,5 @@ export default function Home() {
     </>
   );
 }
+
 
